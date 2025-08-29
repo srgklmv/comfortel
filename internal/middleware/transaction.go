@@ -14,15 +14,12 @@ func Transaction(conn *sql.DB) gin.HandlerFunc {
 		if err != nil {
 			logger.Error("transaction begin err:", err)
 			c.AbortWithError(http.StatusInternalServerError, err)
-			// TODO: c.Next any need?
 			c.Next()
 		}
 
 		c.Set("tx", tx)
 		c.Next()
 
-		// TODO: Check if it works before response sends.
-		// TODO: Add error middleware handler.
 		err = tx.Commit()
 		if err != nil {
 			logger.Error("transaction commit err:", err)

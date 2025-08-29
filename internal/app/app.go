@@ -19,7 +19,6 @@ type app struct {
 }
 
 func New() *app {
-	// TODO: Logs as JSON.
 	return &app{
 		engine: gin.Default(),
 	}
@@ -53,7 +52,6 @@ func (a *app) Run() error {
 	repo := repository.New(a.conn)
 	uc := usecase.New(repo)
 	c := controller.New(uc)
-	// TODO: Add middlewares.
 
 	// routing
 	api.SetRoutes(a.engine, a.conn, c)

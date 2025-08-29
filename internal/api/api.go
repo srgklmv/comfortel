@@ -21,7 +21,6 @@ type userController interface {
 }
 
 func SetRoutes(engine *gin.Engine, conn *sql.DB, controller controller) {
-	// TODO: Custom recovery and cors?
 	engine.Use(cors.Default())
 
 	engine.GET("/ping", func(c *gin.Context) {
@@ -30,7 +29,6 @@ func SetRoutes(engine *gin.Engine, conn *sql.DB, controller controller) {
 
 	api := engine.Group("api", middleware.Transaction(conn))
 
-	// TODO: Add auth middleware.
 	user := api.Group("/user")
 	user.POST("", controller.CreateUser)
 	user.GET("/:id", controller.GetUser)

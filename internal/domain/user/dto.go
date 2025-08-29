@@ -126,8 +126,26 @@ type UpdateUserRequestDTO struct {
 }
 
 func (dto UpdateUserRequestDTO) Validate() (validationError error, err error) {
-	// TODO: Add validations.
-	return
+	matched, err := regexp.MatchString(emailRegex, dto.Email)
+	if err != nil {
+		return nil, fmt.Errorf("regexp.MatchString: %w", err)
+	}
+	if dto.Email != "" && !matched {
+		validationError = errors.Join(validationError, errors.New("invalid email"))
+	}
+
+	if len([]byte(dto.FirstName)) > 20 || len([]byte(dto.LastName)) > 20 || len([]byte(dto.MiddleName)) > 20 {
+		validationError = errors.Join(validationError, errors.New("too long name"))
+	}
+
+	if dto.AvatarURL != "" {
+		u, err := url.Parse(dto.AvatarURL)
+		if err != nil || u.Host == "" {
+			validationError = errors.Join(validationError, errors.New("invalid avatar URL"))
+		}
+	}
+
+	return validationError, nil
 }
 
 type DeleteUserResponseDTO struct {

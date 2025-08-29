@@ -1,0 +1,148 @@
+{
+	"info": {
+		"_postman_id": "f86ae6fa-eb1c-43f4-b836-4335ab13bef0",
+		"name": "Comfortel",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "35364386"
+	},
+	"item": [
+		{
+			"name": "Ping",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url-local}}/ping",
+					"host": [
+						"{{url-local}}"
+					],
+					"path": [
+						"ping"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"login\": \"amogus5\",\n    \"password\": \"abobusss\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url-local}}/api/user",
+					"host": [
+						"{{url-local}}"
+					],
+					"path": [
+						"api",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update user",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"login\": \"amogus1\",\n    \"password\": \"abobusss\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url-local}}/api/user/4654a401-8303-47b2-a757-88210009424c",
+					"host": [
+						"{{url-local}}"
+					],
+					"path": [
+						"api",
+						"user",
+						"4654a401-8303-47b2-a757-88210009424c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url-local}}/api/user",
+					"host": [
+						"{{url-local}}"
+					],
+					"path": [
+						"api",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get user",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url-local}}/api/user/4654a401-8303-47b2-a757-88210009424c",
+					"host": [
+						"{{url-local}}"
+					],
+					"path": [
+						"api",
+						"user",
+						"4654a401-8303-47b2-a757-88210009424c"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url-local",
+			"value": "localhost:3000",
+			"type": "string"
+		}
+	]
+}
